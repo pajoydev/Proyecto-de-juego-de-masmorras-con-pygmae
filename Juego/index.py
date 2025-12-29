@@ -1,12 +1,31 @@
 import pygame
 import sys
-
+from objetos import * 
+from levles import * 
 # --- Funciones ---
 def process():
-    pass
+    keys = key.get_pressed()
+    axis = Vector2()
+    axis.x = int(keys[K_RIGHT]) - int(keys[K_LEFT])
+    axis.y = int(keys[K_DOWN]) - int(keys[K_UP])
+    
+    #codigo player
+    player.moving()
+    player.velocity.x = axis.x
+    player.velocity.y = axis.y
 
 def dibujar():
-    pass
+    player.reset(screen)
+
+
+def make_map():
+    for fila in enumerate(tilemap_1):
+        for col in enumerate(fila):
+            x = col * TILE_SIZE
+            y = fila * TILE_SIZE
+
+
+
 
 # --- Configuración ---
 WIDTH, HEIGHT = 800, 600
@@ -19,6 +38,9 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
+player = ObjetMoving(100,100, 'Player animations/tile_0085.png')
+pared = ObjetStatic(100,100,'TileMap/tile_0000.png')
+
 
 # --- Bucle principal ---
 running = True
