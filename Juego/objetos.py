@@ -3,10 +3,10 @@ from pygame import *
 TILE_SIZE = 32
 
 class ObjetMoving(sprite.Sprite):
-    def __init__(self, x, y, imagee):
+    def __init__(self, x, y, imagee, speed):
         super().__init__()
 
-        self.speed = 4
+        self.speed = speed
         self.velocity = Vector2()
 
         # Imagen (sprite)
@@ -23,9 +23,21 @@ class ObjetMoving(sprite.Sprite):
             TILE_SIZE - 10
         )
 
-    def moving(self):
+    def moving(self, static_objects):
         self.rect.x += self.velocity.x * self.speed
+        for obj in static_objects:
+            if self.rect.colliderect(obj.rect):
+                if self.velocity.x > 0:  # derecha
+                    self.rect.right = obj.rect.left
+                if self.velocity.x < 0:  # izquierda
+                    self.rect.left = obj.rect.right
         self.rect.y += self.velocity.y * self.speed
+        for obj in static_objects:
+            if self.rect.colliderect(obj.rect):
+                if self.velocity.y > 0:  # abajo
+                    self.rect.bottom = obj.rect.top
+                if self.velocity.y < 0:  # arriba
+                    self.rect.top = obj.rect.bottom
 
     def reset(self, window):
 
