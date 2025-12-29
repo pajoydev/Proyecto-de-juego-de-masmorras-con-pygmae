@@ -10,10 +10,7 @@ class ObjetMoving(sprite.Sprite):
         self.velocity = Vector2()
 
         # Imagen (sprite)
-        self.image = transform.scale(
-            image.load(imagee),
-            (TILE_SIZE, TILE_SIZE)
-        )
+        self.image = imagee
 
         # Hitbox más pequeña
         self.rect = Rect(
@@ -56,10 +53,7 @@ class ObjetStatic(sprite.Sprite):
         super().__init__()
 
         # Imagen (sprite)
-        self.image = transform.scale(
-            image.load(imagee),
-            (TILE_SIZE, TILE_SIZE)
-        )
+        self.image = imagee
 
         # Hitbox más pequeña
         self.rect = Rect(
@@ -78,4 +72,6 @@ class ObjetStatic(sprite.Sprite):
         )
         window.blit(self.image, sprite_pos)
         # Dibuja hitbox (solo para debug)
-        draw.rect(window, (255, 0, 0), self.rect, 1)
+        draw.rect(window, (0, 255, 0), self.rect, 1)
+
+
