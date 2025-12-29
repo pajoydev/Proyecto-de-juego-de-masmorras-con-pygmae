@@ -1,32 +1,34 @@
 import pygame
 import sys
-from objetos import * 
+from pygame import sprite
+from objetos import *
 from levles import *
-from objetos_juego.player import * 
+from objetos_juego.player import *
+
 # --- Funciones ---
-def ready():
-    pass
 
 def process():
-    pass
+    player.update(walls)
 
 def dibujar(window):
-    for static in grupo_static:
+    for static in walls:
         static.reset(window)
+    player.reset(window)
 
+def make_map(tile_map):
+    walls = sprite.Group()
 
-def make_map():
-    for y, fila in enumerate(tilemap_1):
+    for y, fila in enumerate(tile_map):
         for x, col in enumerate(fila):
             if col == '1':
-                pared = ObjetStatic(x*TILE_SIZE, 
-                                    y*TILE_SIZE, 
-                                    'TileMap/tile_0000.png')
-                grupo_static.add(pared)
+                pared = ObjetStatic(
+                    x * TILE_SIZE,
+                    y * TILE_SIZE,
+                    'TileMap/tile_0000.png'
+                )
+                walls.add(pared)
 
-
-
-
+    return walls
 
 # --- Configuración ---
 WIDTH, HEIGHT = 800, 600
@@ -40,9 +42,9 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 
-grupo_static = sprite.Group()
-make_map()
-
+# --- Ready ---
+walls = make_map(tilemap_1)
+player = Player(100, 100, 'Player animations/tile_0085.png', 4)
 
 # --- Bucle principal ---
 running = True
@@ -52,6 +54,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
     process()
     screen.fill(BG_COLOR)
     dibujar(screen)
