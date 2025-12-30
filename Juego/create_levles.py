@@ -1,0 +1,73 @@
+from objetos import *
+from render_image import *
+
+
+def make_map_colision(tile_map):
+    walls = sprite.Group()
+
+    for y, fila in enumerate(tile_map):
+        for x, col in enumerate(fila):
+            if col == '1':
+                walls.add(
+                    ObjetStatic(
+                    x * TILE_SIZE,
+                    y * TILE_SIZE,
+                    TILE_CORNERS_IMAGE_1
+                ))
+            
+            if col == '2':
+                walls.add(
+                    ObjetStatic(
+                        x * TILE_SIZE,
+                        y * TILE_SIZE,
+                        TILE_CORNERS_IMAGE_2
+                    ))
+            
+            if col == '3':
+                walls.add(
+                    ObjetStatic(
+                    x * TILE_SIZE,
+                    y * TILE_SIZE,
+                    TILE_CORNERS_IMAGE_3
+                ))
+            
+            if col == '4':
+                walls.add(
+                    ObjetStatic(
+                        x * TILE_SIZE,
+                        y * TILE_SIZE,
+                        TILE_CORNERS_IMAGE_4
+                    ))
+            
+            if col == '5':
+                walls.add(
+                    ObjetStatic(
+                    x * TILE_SIZE,
+                    y * TILE_SIZE,
+                    TILE_BORDERS_x_IMAGE_1
+                ))
+            
+            if col == '6':
+                walls.add(
+                    ObjetStatic(
+                        x * TILE_SIZE,
+                        y * TILE_SIZE,
+                        TILE_BORDERS_x_IMAGE_2
+                    ))
+            
+            if col == '7':
+                walls.add(
+                    ObjetStatic(
+                    x * TILE_SIZE,
+                    y * TILE_SIZE,
+                    TILE_BORDERS_y_IMAGE_1
+                ))
+            
+            if col == '8':
+                walls.add(
+                    ObjetStatic(
+                        x * TILE_SIZE,
+                        y * TILE_SIZE,
+                        TILE_BORDERS_y_IMAGE_2
+                    ))
+    return walls
