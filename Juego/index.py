@@ -4,38 +4,27 @@ from pygame import sprite
 from objetos import *
 from levles import *
 from objetos_juego.player import *
+from create_levles import *
+from objetos_juego.cofre import *
 
 # --- Funciones ---
 
 def process():
     player.update(walls)
+    chest.update(player)
 
 def dibujar(window):
     #colsiones de paredes
     for static in walls:
-        static.reset(window)
+        static.reset(window, True)
     
     #solo piso no colisiona
     for static in floor:
-        static.reset(window)
-    
-    player.reset(window)
+        static.reset(window, True)
+    chest.reset(window, False)
+    player.reset(window, True)
 
-# --- create maps ---
-def make_map_colision(tile_map):
-    walls = sprite.Group()
 
-    for y, fila in enumerate(tile_map):
-        for x, col in enumerate(fila):
-            if col == '1':
-                walls.add(
-                    ObjetStatic(
-                    x * TILE_SIZE,
-                    y * TILE_SIZE,
-                    TILE_WALL_IMG
-                ))
-                
-    return walls
 
 def make_map_layers(tile_map):
     floor = sprite.Group()
@@ -66,26 +55,14 @@ pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 
 
-# --- render image ---
-TILE_WALL_IMG = pygame.transform.scale(
-pygame.image.load('TileMap/tile_0000.png'),
-(TILE_SIZE, TILE_SIZE)
-)
 
-TILE_FLOOR_IMG = pygame.transform.scale(
-    pygame.image.load('TileMap/tile_0049.png'),
-    (TILE_SIZE, TILE_SIZE)
-)
-
-PLAYER_IMG = pygame.transform.scale(
-    pygame.image.load('Player animations/tile_0085.png'),
-    (TILE_SIZE, TILE_SIZE)
-)
 
 # --- Ready ---
+print("")
 walls = make_map_colision(tilemap_1)
 floor = make_map_layers(tilemap_1)
 player = Player(100, 100, PLAYER_IMG, 4)
+chest = Chest(200, 300, CHEST_IMG)
 
 # --- Bucle principal ---
 running = True
