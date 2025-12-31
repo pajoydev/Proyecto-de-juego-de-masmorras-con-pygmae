@@ -1,16 +1,17 @@
 import pygame
 import sys
-from pygame import sprite
 from objetos import *
 from levles import *
 from objetos_juego.player import *
 from create_levles import *
 from objetos_juego.cofre import *
+from objetos_juego.enemy import *
 
 # --- Funciones ---
 
 def process():
     player.update(walls)
+    enemy.update(walls)
 
     for objt in objets:
         objt.update(player)
@@ -29,7 +30,8 @@ def dibujar(window):
     for objt in objets:
         objt.reset(window, True)
     
-    player.reset(window, False)
+    player.reset(window, True)
+    enemy.reset(window, True)
 
 
 
@@ -41,7 +43,7 @@ def dibujar(window):
 WIDTH, HEIGHT = 640, 384
 FPS = 60
 BG_COLOR = (20, 20, 20)
-TITLE = "Pantalla base"
+TITLE = "Mazmorras"
 
 # --- Inicialización ---
 pygame.init()
@@ -53,11 +55,9 @@ clock = pygame.time.Clock()
 
 
 # --- Ready ---
-print("")
 walls = make_map_colision(tilemap_1_colision)
 floor = make_map_layers(tilemap_1_layers)
 objets = make_map_objets(tilemap_1_objets)
-player = Player(100, 100, PLAYER_IMG, 4)
 
 # --- Bucle principal ---
 running = True

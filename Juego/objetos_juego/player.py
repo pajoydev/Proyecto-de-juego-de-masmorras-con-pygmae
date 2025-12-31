@@ -1,9 +1,11 @@
 from objetos import *
 from pygame import *
+from render_image import PLAYER_IMG
 
 class Player(ObjetMoving):
-    def __init__(self, x, y, imagee, speed):
+    def __init__(self, x, y, imagee, speed, name):
         super().__init__(x, y, imagee, speed)
+        self.name = name
 
     def get_axis(self):
         keys = key.get_pressed()
@@ -21,3 +23,5 @@ class Player(ObjetMoving):
     def update(self, static_objects):
         self.velocity = self.get_axis()
         self.moving(static_objects)
+
+player = Player(100,100, PLAYER_IMG, 4, 'Alfredo')

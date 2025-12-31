@@ -16,9 +16,12 @@ class ObjetMoving(sprite.Sprite):
         self.rect = Rect(
             x + 5,
             y + 5,
-            TILE_SIZE - 10,
-            TILE_SIZE - 10
+            (TILE_SIZE - 10),
+            (TILE_SIZE - 10)
         )
+
+
+
 
     def moving(self, static_objects):
         self.rect.x += self.velocity.x * self.speed
@@ -38,11 +41,13 @@ class ObjetMoving(sprite.Sprite):
 
     def reset(self, window, debug):
 
+
         # Centrar sprite sobre la hitbox
         sprite_pos = (
             self.rect.centerx - TILE_SIZE // 2,
             self.rect.centery - TILE_SIZE // 2
         )
+
         window.blit(self.image, sprite_pos)
         # Dibuja hitbox (solo para debug)
         if debug:

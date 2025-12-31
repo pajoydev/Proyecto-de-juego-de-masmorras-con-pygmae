@@ -54,11 +54,16 @@ TILE_FOND_IMG = pygame.transform.scale(
 )
 
 PLAYER_IMG = pygame.transform.scale(
-    pygame.image.load('Player animations/tile_0085.png'),
+    pygame.image.load('Characters animations/Players anmations/tile_0085.png'),
     (TILE_SIZE, TILE_SIZE)
 )
 
 CHEST_IMG = pygame.transform.scale(
-    pygame.image.load('Objetos animations/tile_0089.png'),
+    pygame.image.load('Objetos animations/Chest animations/tile_0089.png'),
+    (TILE_SIZE, TILE_SIZE)
+)
+
+ENEMY_IMG = pygame.transform.scale(
+    pygame.image.load('Characters animations/Enemy animations/tile_0109.png'),
     (TILE_SIZE, TILE_SIZE)
 )
