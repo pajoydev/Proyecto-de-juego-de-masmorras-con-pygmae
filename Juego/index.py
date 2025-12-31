@@ -8,7 +8,6 @@ from objetos_juego.cofre import *
 from objetos_juego.enemy import *
 
 # --- Funciones ---
-
 def process():
     player.update(walls)
     enemy.update(walls)
@@ -17,8 +16,6 @@ def process():
         objt.update(player)
 
 def dibujar(window):
-    
-    
     #solo piso no colisiona
     for static in floor:
         static.reset(window, False)
@@ -33,12 +30,6 @@ def dibujar(window):
     player.reset(window, True)
     enemy.reset(window, True)
 
-
-
-
-
-
-
 # --- Configuración ---
 WIDTH, HEIGHT = 640, 384
 FPS = 60
@@ -46,13 +37,12 @@ BG_COLOR = (20, 20, 20)
 TITLE = "Mazmorras"
 
 # --- Inicialización ---
+print('Como quieres que se llame tu jugador??')
+nombre_jugador = input('>')  
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
-
-
-
 
 # --- Ready ---
 walls = make_map_colision(tilemap_1_colision)

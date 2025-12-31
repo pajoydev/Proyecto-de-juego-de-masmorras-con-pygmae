@@ -5,7 +5,6 @@ from objetos_juego.cofre import *
 
 def make_map_colision(tile_map):
     walls = sprite.Group()
-
     for y, fila in enumerate(tile_map):
         for x, col in enumerate(fila):
             if col == '1':
@@ -76,7 +75,6 @@ def make_map_colision(tile_map):
 
 def make_map_layers(tile_map):
     layers = sprite.Group()
-
     for y, fila in enumerate(tile_map):
         for x, col in enumerate(fila):
             if col == '0':
@@ -99,7 +97,6 @@ def make_map_layers(tile_map):
 
 def make_map_objets(tilemap):
     objets = sprite.Group()
-
     for y, fila in enumerate(tilemap):
         for x, col in enumerate(fila):
             if col == '1':
@@ -110,5 +107,4 @@ def make_map_objets(tilemap):
                         CHEST_IMG,
                     )
                 )
-    
     return objets

@@ -5,13 +5,10 @@ TILE_SIZE = 32
 class ObjetMoving(sprite.Sprite):
     def __init__(self, x, y, imagee, speed):
         super().__init__()
-
         self.speed = speed
         self.velocity = Vector2()
-
         # Imagen (sprite)
         self.image = imagee
-
         # Hitbox más pequeña
         self.rect = Rect(
             x + 5,
@@ -19,9 +16,6 @@ class ObjetMoving(sprite.Sprite):
             (TILE_SIZE - 10),
             (TILE_SIZE - 10)
         )
-
-
-
 
     def moving(self, static_objects):
         self.rect.x += self.velocity.x * self.speed
@@ -40,14 +34,11 @@ class ObjetMoving(sprite.Sprite):
                     self.rect.top = obj.rect.bottom
 
     def reset(self, window, debug):
-
-
         # Centrar sprite sobre la hitbox
         sprite_pos = (
             self.rect.centerx - TILE_SIZE // 2,
             self.rect.centery - TILE_SIZE // 2
         )
-
         window.blit(self.image, sprite_pos)
         # Dibuja hitbox (solo para debug)
         if debug:
@@ -57,10 +48,8 @@ class ObjetMoving(sprite.Sprite):
 class ObjetStatic(sprite.Sprite):
     def __init__(self, x, y, imagee):
         super().__init__()
-
         # Imagen (sprite)
         self.image = imagee
-
         # Hitbox más pequeña
         self.rect = Rect(
             x,
@@ -70,7 +59,6 @@ class ObjetStatic(sprite.Sprite):
         )
 
     def reset(self, window, debug):
-
         # Centrar sprite sobre la hitbox
         sprite_pos = (
             self.rect.centerx - TILE_SIZE // 2,
@@ -84,10 +72,8 @@ class ObjetStatic(sprite.Sprite):
 class ObjetcCollectable(sprite.Sprite):
     def __init__(self, x, y, imagee):
         super().__init__()
-
         # Imagen (sprite)
         self.image = imagee
-
         # Hitbox más pequeña
         self.rect = Rect(
             x,
@@ -97,7 +83,6 @@ class ObjetcCollectable(sprite.Sprite):
         )
 
     def reset(self, window, debug):
-
         # Centrar sprite sobre la hitbox
         sprite_pos = (
             self.rect.centerx - TILE_SIZE // 2,
@@ -107,5 +92,3 @@ class ObjetcCollectable(sprite.Sprite):
         # Dibuja hitbox (solo para debug)
         if debug:
             draw.rect(window, (0, 255, 0), self.rect, 1)
-
-
