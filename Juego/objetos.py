@@ -45,7 +45,7 @@ class ObjetMoving(sprite.Sprite):
         )
         window.blit(self.image, sprite_pos)
         # Dibuja hitbox (solo para debug)
-        if not debug:
+        if debug:
             draw.rect(window, (255, 0, 0), self.rect, 1)
 
 
@@ -73,7 +73,7 @@ class ObjetStatic(sprite.Sprite):
         )
         window.blit(self.image, sprite_pos)
         # Dibuja hitbox (solo para debug)
-        if not debug:
+        if debug:
             draw.rect(window, (0, 0, 255), self.rect, 1)
 
 class ObjetcCollectable(sprite.Sprite):
@@ -100,7 +100,7 @@ class ObjetcCollectable(sprite.Sprite):
         )
         window.blit(self.image, sprite_pos)
         # Dibuja hitbox (solo para debug)
-        if not debug:
+        if debug:
             draw.rect(window, (0, 255, 0), self.rect, 1)
 
 
