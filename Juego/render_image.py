@@ -48,6 +48,11 @@ TILE_FLOOR_IMG = pygame.transform.scale(
     (TILE_SIZE, TILE_SIZE)
 )
 
+TILE_FOND_IMG = pygame.transform.scale(
+    pygame.image.load('TileMap/tile_0000.png'),
+    (TILE_SIZE, TILE_SIZE)
+)
+
 PLAYER_IMG = pygame.transform.scale(
     pygame.image.load('Player animations/tile_0085.png'),
     (TILE_SIZE, TILE_SIZE)

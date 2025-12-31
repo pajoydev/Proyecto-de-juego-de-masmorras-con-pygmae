@@ -11,35 +11,30 @@ from objetos_juego.cofre import *
 
 def process():
     player.update(walls)
-    chest.update(player)
+
+    for objt in objets:
+        objt.update(player)
 
 def dibujar(window):
-    #colsiones de paredes
-    for static in walls:
-        static.reset(window, True)
+    
     
     #solo piso no colisiona
     for static in floor:
-        static.reset(window, True)
-    chest.reset(window, False)
-    player.reset(window, True)
+        static.reset(window, False)
+    
+    #colsiones de paredes
+    for static in walls:
+        static.reset(window, False)
+    
+    for objt in objets:
+        objt.reset(window, True)
+    
+    player.reset(window, False)
 
 
 
-def make_map_layers(tile_map):
-    floor = sprite.Group()
 
-    for y, fila in enumerate(tile_map):
-        for x, col in enumerate(fila):
-            if col == '0':
-                floor.add(
-                    ObjetStatic(
-                    x * TILE_SIZE,
-                    y * TILE_SIZE,
-                    TILE_FLOOR_IMG
-                ))
-                
-    return floor
+
 
 
 # --- Configuración ---
@@ -59,10 +54,10 @@ clock = pygame.time.Clock()
 
 # --- Ready ---
 print("")
-walls = make_map_colision(tilemap_1)
-floor = make_map_layers(tilemap_1)
+walls = make_map_colision(tilemap_1_colision)
+floor = make_map_layers(tilemap_1_layers)
+objets = make_map_objets(tilemap_1_objets)
 player = Player(100, 100, PLAYER_IMG, 4)
-chest = Chest(200, 300, CHEST_IMG)
 
 # --- Bucle principal ---
 running = True

@@ -1,4 +1,5 @@
 from objetos import * 
+import pygame 
 
 
 class Chest(ObjetcCollectable):
@@ -6,8 +7,11 @@ class Chest(ObjetcCollectable):
         super().__init__(x, y, imagee)
     
     def colision_(self, objt):
+        teclas = pygame.key.get_pressed()
         if self.rect.colliderect(objt.rect):
-            print("Wiinnnnnnn")
+            if teclas[K_x]:
+
+                print("Wiinnnnnnn")
     
     def update(self, player):
         self.colision_(player)
