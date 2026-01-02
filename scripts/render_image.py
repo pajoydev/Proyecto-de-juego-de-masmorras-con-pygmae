@@ -1,5 +1,5 @@
 import pygame
-from objetos import TILE_SIZE
+from scripts.objetos import TILE_SIZE
 
 # --- render image ---
 

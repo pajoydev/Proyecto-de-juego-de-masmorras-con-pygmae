@@ -1,11 +1,11 @@
 import pygame
 import sys
-from objetos import *
-from levles import *
-from objetos_juego.player import *
-from create_levles import *
-from objetos_juego.cofre import *
-from objetos_juego.enemy import *
+from scripts.objetos import *
+from scripts.levles import *
+from scripts.objetos_juego.player import *
+from scripts.create_levles import *
+from scripts.objetos_juego.cofre import *
+from scripts.objetos_juego.enemy import *
 
 # --- Funciones ---
 def process():

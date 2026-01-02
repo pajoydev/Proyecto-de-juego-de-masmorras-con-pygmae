@@ -1,6 +1,6 @@
-from objetos import *
-from render_image import *
-from objetos_juego.cofre import *
+from scripts.objetos import *
+from scripts.render_image import *
+from scripts.objetos_juego.cofre import *
 
 
 def make_map_colision(tile_map):
@@ -108,3 +108,4 @@ def make_map_objets(tilemap):
                     )
                 )
     return objets
+

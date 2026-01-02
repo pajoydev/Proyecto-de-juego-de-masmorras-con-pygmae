@@ -1,5 +1,5 @@
-from objetos import * 
 import pygame 
+from scripts.objetos import * 
 
 
 class Chest(ObjetcCollectable):

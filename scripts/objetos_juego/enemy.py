@@ -1,8 +1,9 @@
-from objetos import *
-from pygame import *
-from objetos_juego.player import player
-from render_image import ENEMY_IMG
 from math import *
+from pygame import *
+from scripts.objetos_juego.player import player
+from scripts.render_image import ENEMY_IMG
+from scripts.objetos import *
+
 
 class Enemy(ObjetMoving):
     def __init__(self, x, y, imagee, speed, id, player):
@@ -15,7 +16,7 @@ class Enemy(ObjetMoving):
             (TILE_SIZE - 10) * 2,
             (TILE_SIZE - 10) * 2
         )
-        self.detection_radius = 150
+        self.detection_radius = 200
 
     def get_axis(self):
         # Vector desde enemy hacia player
@@ -40,4 +41,4 @@ class Enemy(ObjetMoving):
         self.detection()
         self.moving(static_objects)
 
-enemy = Enemy(200, 100, ENEMY_IMG, 1, 'Ciclope', player)
+enemy = Enemy(571, 323, ENEMY_IMG, 1, 'Ciclope', player)

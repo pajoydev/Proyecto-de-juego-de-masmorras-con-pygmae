@@ -1,6 +1,6 @@
-from objetos import *
 from pygame import *
-from render_image import PLAYER_IMG
+from scripts.render_image import PLAYER_IMG
+from scripts.objetos import *
 
 class Player(ObjetMoving):
     def __init__(self, x, y, imagee, speed, name):
@@ -10,6 +10,8 @@ class Player(ObjetMoving):
     def get_axis(self):
         keys = key.get_pressed()
 
+        if keys[K_p]:
+            print(self.rect)
         axis_x = int(keys[K_d] or keys[K_RIGHT]) - int(keys[K_a] or keys[K_LEFT])
         axis_y = int(keys[K_s] or keys[K_DOWN]) - int(keys[K_w] or keys[K_UP])
 
@@ -24,4 +26,4 @@ class Player(ObjetMoving):
         self.velocity = self.get_axis()
         self.moving(static_objects)
 
-player = Player(100,100, PLAYER_IMG, 4, 'Alfredo')
+player = Player(100, 100, PLAYER_IMG, 4, 'Alfredo')
